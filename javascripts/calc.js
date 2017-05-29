@@ -13,7 +13,8 @@ var screen = document.getElementById('screen');
 //setScreen should probaby know how to set screen to result
 //HINT: pass an argument to this function
 function setScreen(){
-  screen.innerText = leftHand + operator + rightHand;
+  screen.innerText = leftHand + " " + operator + " " + rightHand + " = " + result;
+
 }
 
 for(var i = 0; i < operatorButtons.length; i++) {
@@ -21,7 +22,7 @@ var button = operatorButtons[i];
 button.addEventListener('click', function() {
   // todo probably check for leftHand before set an operator
   operator = this.innerText;
-  setScreen();
+
 });
 }
 
@@ -31,39 +32,43 @@ button.addEventListener('click', function() {
   if(operator.length) {
     // do not allow divide by zero
     rightHand += this.innerText;
+    setScreen();
   } else {
     leftHand += this.innerText;
+    setScreen();
   }
-    setScreen;
+    // setScreen;
   });
 }
 equalButton.addEventListener('click', function () {
   console.log(leftHand);
   console.log(operator);
-  console.log(rightHand)
-//todo: cast the string of left and right hand into floats or integers (google)
+  console.log(rightHand);
+
+var left = parseFloat(leftHand)
+var right = parseFloat(rightHand)
 
   if(leftHand && operator && rightHand){
     switch(operator) {
       case '+':
-        result = leftHand + rightHand;
+        result = left + right;
         break;
       case '-':
-        result = leftHand - rightHand;
+        result = left - right;
         break;
-      case 'x':
-        result = leftHand * rightHand;
+      case 'X':
+        result = left * right;
         break;
       case '/':
-        result = leftHand / rightHand;
+        result = left / right;
         break;
       default:
         alert('Invalid operator');
-    }
+    } setScreen();
   } else {
     //todo: make more user friendly by telling user what they are missing
     alert('Invalid equation!')
-  }
+  } console.log(result)
 });
 
  //option com J to open devtools
