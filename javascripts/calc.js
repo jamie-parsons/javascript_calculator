@@ -17,9 +17,9 @@ for(var i = 0; i < operatorButtons.length; i++) {
   var button = operatorButtons[i];
   button.addEventListener('click', function() {
     if(leftHand.length) {
-    operator = this.innerText;
+        operator = this.innerText;
     } else {
-      alert("Need to enter a value first!")
+        alert("Need to enter a value first!")
     }
   });
 }
@@ -37,13 +37,13 @@ for(var i = 0; i < numberButtons.length; i++) {
   button.addEventListener('click', function() {
     if(operator.length) {
       if(rightHand == "0") {
-      alert("Can't divide by zero!")
+          alert("Can't divide by zero!")
       } else {
-        rightHand += this.innerText;
-        setScreen();
+          rightHand += this.innerText;
+          setScreen();
     }} else {
-       leftHand += this.innerText;
-       setScreen();
+         leftHand += this.innerText;
+         setScreen();
     }
   });
 }
@@ -74,8 +74,8 @@ equalButton.addEventListener('click', function () {
         alert('Invalid operator');
     } setScreen();
   } else {
-    //todo: make more user friendly by telling user what they are missing
-    alert('Invalid equation!')
+      //todo: make more user friendly by telling user what they are missing
+      alert('Invalid equation!')
   } console.log(result)
 });
 
