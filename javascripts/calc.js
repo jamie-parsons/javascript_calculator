@@ -10,8 +10,7 @@ var operatorButtons = document.getElementsByClassName('op_button');
 var screen = document.getElementById('screen');
 //todo: wire up clear button event listener
 
-//setScreen should probaby know how to set screen to result
-//HINT: pass an argument to this function
+
 function setScreen(){
   screen.innerText = leftHand + " " + operator + " " + rightHand + " = " + result;
 
@@ -20,8 +19,11 @@ function setScreen(){
 for(var i = 0; i < operatorButtons.length; i++) {
 var button = operatorButtons[i];
 button.addEventListener('click', function() {
-  // todo probably check for leftHand before set an operator
+  if(leftHand.length) {
   operator = this.innerText;
+}  else {
+  alert("Need to enter a value first!")
+}
 
 });
 }
@@ -30,14 +32,16 @@ for(var i = 0; i < numberButtons.length; i++) {
 var button = numberButtons[i];
 button.addEventListener('click', function() {
   if(operator.length) {
-    // do not allow divide by zero
-    rightHand += this.innerText;
-    setScreen();
-  } else {
+    if(rightHand == "0") {
+    alert("Can't divide by zero!")
+  }  else {
+      rightHand += this.innerText;
+      setScreen();
+  }} else {
     leftHand += this.innerText;
     setScreen();
   }
-    // setScreen;
+
   });
 }
 equalButton.addEventListener('click', function () {
@@ -70,5 +74,3 @@ var right = parseFloat(rightHand)
     alert('Invalid equation!')
   } console.log(result)
 });
-
- //option com J to open devtools
